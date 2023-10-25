@@ -77,14 +77,23 @@
 }
 
 body {
-  background-image: url("./../assets/movie-poster.webp");
+  background-image: url("./../assets/movie-poster-PhotoRoom.webp");
   background-color: #000;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@media (max-width: 768px){
+  body {
+    background-size: cover;
+  }
 }
 
 .image {
   width: 100%;
   object-fit: cover;
-  height: 170%;
+  height: 100%;
 }
 
 h3 {
