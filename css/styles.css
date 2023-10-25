@@ -84,10 +84,20 @@ body {
 .image {
   width: 100%;
   object-fit: cover;
-  height: 250px;
+  height: 170%;
 }
 
 h3 {
   font-family: Roboto Serif;
   border-bottom: 1px solid grey;
+}
+
+.rating-container{
+  display: grid;
+  grid-template-columns: repeat(5,auto);
+}
+
+.fa-star {
+  color: transparent; 
+  overflow: hidden;
 }
