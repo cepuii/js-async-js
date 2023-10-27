@@ -110,3 +110,7 @@ h3 {
   color: transparent; 
   overflow: hidden;
 }
+
+.toast{
+  width: 100%;
+}
