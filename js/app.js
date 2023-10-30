@@ -99,16 +99,14 @@ function addFilmOnPage(film){
   </div>
   `;
     
-  filmCardsWrapper.appendChild(filmContainer);
-  
   if(film.score){
     setRating(film.score, filmContainer);
   } else {
     setRating(film.rating.average/10, filmContainer);
   }
   
-    function setRating(ratingValue, container) {
-    const ratingContainer = container.querySelector(".rating-container");
+  function setRating(ratingValue, container) {
+    const ratingContainer = filmContainer.querySelector(".rating-container");
     for(let i = 0; i < ratingStarsAmount; i++) {
       const starContainer = document.createElement('div');
       const star = document.createElement('span');
@@ -130,6 +128,9 @@ function addFilmOnPage(film){
       ratingContainer.appendChild(starContainer);
     };
   }
+  
+  filmCardsWrapper.appendChild(filmContainer);
+
 }
 
 
