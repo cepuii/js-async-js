@@ -130,7 +130,6 @@ function addFilmOnPage(film){
   }
   
   filmCardsWrapper.appendChild(filmContainer);
-
 }
 
 
