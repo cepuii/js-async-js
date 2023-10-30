@@ -106,25 +106,30 @@ function addFilmOnPage(film){
   } else {
     setRating(film.rating.average/10, filmContainer);
   }
-}
-
-function setRating(ratingValue, container) {
-  const ratingContainer = container.querySelector(".rating-container");
-  for(let i = 0; i < ratingStarsAmount; i++) {
-    const star = document.createElement('span');
-    star.classList.add('fa', 'fa-star', 'text-success');
-    
-    const perStarRating = 1 / ratingStarsAmount;
-    const percentFilled = (ratingValue - i * perStarRating) - perStarRating;
-    if (percentFilled >= perStarRating) {
-      star.style.width = "100%";
-    } else if (percentFilled <= 0) {
-      star.style.width = "0%";
-    } else {
-      star.style.width = `${(percentFilled * 100)/perStarRating}%`;
-    }
-    ratingContainer.appendChild(star);
-  };
+  
+    function setRating(ratingValue, container) {
+    const ratingContainer = container.querySelector(".rating-container");
+    for(let i = 0; i < ratingStarsAmount; i++) {
+      const starContainer = document.createElement('div');
+      const star = document.createElement('span');
+      star.classList.add('fa', 'fa-star', 'text-success', 'real-star');
+      const emptyStar = document.createElement('span');
+      emptyStar.classList.add('fa', 'fa-star-o', 'empty-star');
+      starContainer.appendChild(emptyStar);
+      
+      const perStarRating = 1 / ratingStarsAmount;
+      const percentFilled = (ratingValue - i * perStarRating) - perStarRating;
+      if (percentFilled >= perStarRating) {
+        star.style.width = "100%";
+      } else if (percentFilled <= 0) {
+        star.style.width = "0%";
+      } else {
+        star.style.width = `${(percentFilled * 100)/perStarRating}%`;
+      }
+      starContainer.appendChild(star);
+      ratingContainer.appendChild(starContainer);
+    };
+  }
 }
 
 

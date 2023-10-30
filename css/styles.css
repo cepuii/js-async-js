@@ -106,9 +106,15 @@ h3 {
   grid-template-columns: repeat(5,auto);
 }
 
-.fa-star {
+.real-star {
   color: transparent; 
   overflow: hidden;
+}
+
+.empty-star{
+  position: absolute;
+  bottom: 25px;
+  opacity: 0.5;
 }
 
 .toast{
