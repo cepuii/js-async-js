@@ -5,7 +5,7 @@ const templateMovieImage = 'https://img.freepik.com/free-photo/movie-background-
 
 const beginSearchFromValueLength = 3;
 const ratingStarsAmount = 5;
-const itemsPerPage = 12;
+const itemsPerPage = 5;
 
 const searchInput = document.querySelector('#search');
 const filmCardsWrapper = document.querySelector('#rowContainer');
@@ -81,7 +81,8 @@ function addFilmOnPage(film){
     
   const {name, summary, image, url} = film.show ? film.show : film;
   let imgSrc = image ? image.original : templateMovieImage;
-  
+  let filmRating = film.score ? film.score : film.rating.average/10;
+
   filmContainer.innerHTML = `
   <img class="image"  src="${imgSrc}"/>
   <div class="card-body show">
@@ -98,15 +99,14 @@ function addFilmOnPage(film){
     </div>
   </div>
   `;
-    
-  if(film.score){
-    setRating(film.score, filmContainer);
-  } else {
-    setRating(film.rating.average/10, filmContainer);
-  }
   
+  setRating(filmRating, filmContainer);
+
+  filmCardsWrapper.appendChild(filmContainer);
+}
+
   function setRating(ratingValue, container) {
-    const ratingContainer = filmContainer.querySelector(".rating-container");
+    const ratingContainer = container.querySelector(".rating-container");
     for(let i = 0; i < ratingStarsAmount; i++) {
       const starContainer = document.createElement('div');
       const star = document.createElement('span');
@@ -127,11 +127,7 @@ function addFilmOnPage(film){
       starContainer.appendChild(star);
       ratingContainer.appendChild(starContainer);
     };
-  }
-  
-  filmCardsWrapper.appendChild(filmContainer);
 }
-
 
 function addFilmsOnPageWithPagination(films){
 
