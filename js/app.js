@@ -5,7 +5,7 @@ const templateMovieImage = 'https://img.freepik.com/free-photo/movie-background-
 
 const beginSearchFromValueLength = 3;
 const ratingStarsAmount = 5;
-const itemsPerPage = 5;
+const itemsPerPage = 12;
 
 const searchInput = document.querySelector('#search');
 const filmCardsWrapper = document.querySelector('#rowContainer');
@@ -76,9 +76,10 @@ function addFilmsOnPage(films){
 }
   
 function addFilmOnPage(film){
+  const colContainer = document.createElement('div');
+  colContainer.classList.add('col', 'shadow-sm');
   const filmContainer = document.createElement('div');
-  filmContainer.classList.add('col', 'shadow-sm', 'card');
-    
+  filmContainer.classList.add('card');
   const {name, summary, image, url} = film.show ? film.show : film;
   let imgSrc = image ? image.original : templateMovieImage;
   let filmRating = film.score ? film.score : film.rating.average/10;
@@ -101,8 +102,8 @@ function addFilmOnPage(film){
   `;
   
   setRating(filmRating, filmContainer);
-
-  filmCardsWrapper.appendChild(filmContainer);
+  colContainer.appendChild(filmContainer);
+  filmCardsWrapper.appendChild(colContainer);
 }
 
   function setRating(ratingValue, container) {

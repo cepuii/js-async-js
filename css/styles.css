@@ -91,9 +91,10 @@ body {
 }
 
 .image {
-  width: 100%;
-  object-fit: cover;
-  height: 100%;
+  padding: 5px;
+  width: auto;
+  object-fit: contain;
+  height: 550px;
 }
 
 h3 {
